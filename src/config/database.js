@@ -1,7 +1,9 @@
+require('dotenv').config()
+
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
-const url = process.env.MONGOLAB_URI ? process.env.MONGOLAB_URI : 'mongodb://localhost/mymoney'
+const url = process.env.MONGOLAB_URI
 module.exports = mongoose.connect(url, { useNewUrlParser: true })
 
 mongoose.Error.messages.general.required = "O atributo '{PATH}' é obrigatório."
