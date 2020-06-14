@@ -22,7 +22,7 @@ const login = (req, res, next) => {
         if (err) {
             return sendErrorsFromDB(res, err)
         } else if (user && bcrypt.compareSync(password, user.password)) {
-            const token = jwt.sign({ ...user }, process.env.authSecret, {
+            const token = jwt.sign({ ...user }, process.env.AUTH_SECRET, {
                 expiresIn: "1 day"
             })
             const { name, email } = user
@@ -36,7 +36,7 @@ const login = (req, res, next) => {
 const validateToken = (req, res, next) => {
     const token = req.body.token || ''
 
-    jwt.verify(token, process.env.authSecret, function (err, decoded) {
+    jwt.verify(token, process.env.AUTH_SECRET, function (err, decoded) {
         return res.status(200).send({ valid: !err })
     })
 }

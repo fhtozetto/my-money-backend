@@ -1,0 +1,4 @@
+AUTH_SECRET=hdhjhdjfhj
+    
+MONGODB_URI=mongodb://localhost/mymoney
+
